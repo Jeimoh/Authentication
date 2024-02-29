@@ -10,6 +10,8 @@ class Users(models.Model):
     Email = models.EmailField()
     Username = models.CharField(max_length = 50)
     phoneNo = models.CharField(max_length = 15)
+
+  
     def __str__(self):
         return self.Username
 

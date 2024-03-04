@@ -1,0 +1,30 @@
+So, I was able to diagnose the problem. It was that, the system wasn't referencing the correct authentication procedure, that is, the one you want to use from the Login app.
+So, I added the code, "AUTH_USER = 'Login.User' # This is the app that handles the login or authentication" to let the system reference the Login app as the one to handle user authentication
+
+I understand you're growing, and this is a good attempt. 
+However, I would advise that you don't use the system like this, because, to be honest, is a very unrecommended, unethical, unprofessional, and unconventional way of using User Authentication. Please consider the following recommendations.
+
+1. Model Naming Convention:
+
+- It's a common convention in Django to use singular form for model names. So, instead of Users, you might consider naming your model User as I have done.
+
+2. Password Field:
+
+- For storing passwords, it's recommended to use Django's built-in PasswordField instead of a regular CharField. Django provides a secure way to handle passwords, including hashing.
+
+3. Form Validation: (Registering the user)
+
+- In the if form.is_valid condition, you need to call the is_valid() method by adding parentheses, like this: if form.is_valid():. Currently, it's missing the parentheses, but I have corrected it.
+
+
+4. Cleaning Data in LoginForm:
+
+- In your login view, it seems there's a mismatch in the field names. You are trying to access Username and password in form.cleaned_data, but the actual field names are username and password. The field names are case-sensitive.
+
+
+5. Hashing the password:
+- Your password ought to have a hashing functionality
+
+Prescription:
+- Look up how to do Django User Management/Authentication.
+- Observe the naming conventions of files, variables, field names, urls, etc... eg, don't mix cases, stick to one case, like lowercase.

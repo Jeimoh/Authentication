@@ -1,11 +1,15 @@
 from django.forms import ModelForm
-from .models import Users
+from .models import User
 
 class LoginForm(ModelForm):
     class Meta:
-        model = Users
-        fields = ['Username','password']
+        model = User
+        fields = ['username','password']
+
+
 class RegisterForm(ModelForm):
     class Meta:
-        model = Users
+        model = User
         fields = '__all__'
+        # You don't want to register using all fields, since this will display even the auto-filled fields
+        # You should use the following
